@@ -6,9 +6,11 @@ require './MagicFilter2.rb'
 require './AnaRotPer-2.rb'
 require './Synthesis.rb'
 
+$shape_options = { narr: false, ld: false }
+
 openmp = true
 def MagicFilter1d(filter, optims=GenericOptimization::new)
-  conv_operation = GenericConvolutionOperator1d::new(filter, :ld => true, :narr => true, :a_x => true,:a_y=>true, :a => true)
+  conv_operation = GenericConvolutionOperator1d::new(filter, :a_x => true,:a_y=>true, :a => true, **$shape_options)
   conv_operation.optimize(optims) if optims
 
   p, subops = conv_operation.procedure
@@ -28,7 +30,7 @@ def MagicFilter1d(filter, optims=GenericOptimization::new)
   return kernel
 end
 def Wavelet1d(wavelet_filter, direction, optims=GenericOptimization::new)
-  conv_operation = GenericConvolutionOperator1d::new(wavelet_filter, :wavelet => direction, :a => true, :a_y => true, :ld => true, :narr => true)
+  conv_operation = GenericConvolutionOperator1d::new(wavelet_filter, :wavelet => direction, :a => true, :a_y => true, **$shape_options)
   conv_operation.optimize(optims) if optims
 
   p, subops = conv_operation.procedure
