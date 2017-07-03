@@ -1,0 +1,1 @@
+gcc test.c d_s1s0_1d_sym8.c d_s0s1_1d_sym8.c d_s0s0_1d_sym8_imd.c d_s0s0_1d_sym8_md.c 
