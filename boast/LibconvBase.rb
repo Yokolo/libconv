@@ -58,7 +58,7 @@ def dataspace(actual_ld,random=false)
 end
 
 
-optims = GenericOptimization::new(:unroll_range => [1,1], :mod_arr_test => false, :tt_arr_test => false)
+$optims = GenericOptimization::new(:unroll_range => [1,6], :mod_arr_test => true, :tt_arr_test => true)
 def get_reference_kernels()
   sref = BOAST::synthesis_per_ref
   sref.build(verbose => true)

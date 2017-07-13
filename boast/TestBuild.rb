@@ -2,12 +2,12 @@
 require './LibconvBase.rb'
 #load './LibconvBase.rb'
 
-dwt=generate_dwt()
-iwt=generate_iwt()
-mf=generate_mf()
-imf=generate_imf()
-s1r=generate_s1tor()
-rs1=generate_rtos1()
+dwt=generate_dwt($optims)
+iwt=generate_iwt($optims)
+mf=generate_mf($optims)
+imf=generate_imf($optims)
+s1r=generate_s1tor($optims)
+rs1=generate_rtos1($optims)
 
 files=[dwt.dump_to_file(),iwt.dump_to_file(),mf.dump_to_file(),imf.dump_to_file(),rs1.dump_to_file(),s1r.dump_to_file()]
 

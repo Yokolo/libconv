@@ -16,7 +16,6 @@ Makefile.in
 /install-sh
 /missing
 /stamp-h1
-/boast/src
 /src
 /COPYING
 /config.guess
