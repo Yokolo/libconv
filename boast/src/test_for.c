@@ -7,7 +7,7 @@
 
 //#include <ddot.f>
 
-#define NBTESTS 100
+#define NBTESTS 50
 #define PERIODIC 0
 #define GROW 1
 #define SHRINK -1
@@ -147,7 +147,7 @@ int main(){
 	Matrice random[NBTESTS]; // matrices random pour la multiplication avec la matrice arrivant dans l'espace réel pour l'énergie potentiel
 	Matrice tmp[NBTESTS];
 	double energie[NBTESTS];
-	srand(3);
+	srand(time(NULL));
 
 	int dim[3];
 	for(i=0; i < NBTESTS; i++){
@@ -164,6 +164,7 @@ int main(){
 		setMatrice(&random[i]);
 		//printf("Test mémoire &m1[%d].tab = %p, &m2[%d].tab = %p, &m3[%d].tab = %p \n",i,&m1[i].tab[24],i,&m2[i].tab[24],i,&m3[i].tab[24]);
 	}
+	double start_time = omp_get_wtime();
 	#pragma omp parallel default(shared)
 	//default(none) private(i) shared(m1,m2,m3,res,random,tmp,energie)
 	{
@@ -219,9 +220,13 @@ int main(){
 		//#pragma omp single
 		//printMatrice(&res[i]);
 	}
-	for(i=0; i < NBTESTS ; i++){
+	double time = omp_get_wtime() - start_time;
+
+	/*for(i=0; i < NBTESTS ; i++){
 		printf(" Energie %d= %f \n",i, energie[i]);
-	} 
+	}*/
+	printf("Time for this execution : %lf \n",time);
+
 	return 0;
 }
 
