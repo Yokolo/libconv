@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include <immintrin.h>
 #include <omp.h>
 
 //#include <ddot.f>
@@ -103,8 +102,9 @@ int compareMatrice(Matrice *mat1, Matrice *mat2, double epsilon){
 void multPoint(Matrice *m1, Matrice *m2){
 	double *tmpin = m1->tab;
 	double *tmppot = m2->tab;
+	int i;
 	size_t t = getMatriceSize(m1);
-	for(int i = 0; i < getMatriceSize(m1); i++){
+	for( i = 0; i < getMatriceSize(m1); i++){
 			m1->tab[i]=m2->tab[i] * m1->tab[i];
 	}
 }
